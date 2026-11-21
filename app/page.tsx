@@ -264,17 +264,17 @@ export default function WorkspacePage() {
 
   if (isLoading || !currentUser) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#090d16]">
+      <div className="min-h-screen flex items-center justify-center bg-[#09090b]">
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-xs text-gray-400 font-mono">Initializing Apex Workplace Copilot...</p>
+          <div className="w-9 h-9 border-2 border-zinc-400 border-t-transparent rounded-full animate-spin mx-auto" />
+          <p className="text-xs text-zinc-400 font-mono">Initializing One Corp Assistant...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#090d16] text-gray-100">
+    <div className="min-h-screen flex flex-col bg-[#09090b] text-zinc-100">
       {/* Top Navbar */}
       <Navbar
         currentUser={currentUser}
@@ -290,17 +290,17 @@ export default function WorkspacePage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-center gap-2 flex-wrap">
             <h1 className="text-sm sm:text-base font-semibold text-white tracking-tight">Workplace Voice Assistant</h1>
-            <span className="text-xs text-gray-500 hidden sm:inline">•</span>
-            <span className="text-xs text-gray-400">
-              Role: <span className="text-indigo-300 font-medium capitalize">{currentUser.role.replace("_", " ")}</span>
+            <span className="text-xs text-zinc-600 hidden sm:inline">•</span>
+            <span className="text-xs text-zinc-400">
+              Role: <span className="text-zinc-200 font-medium capitalize">{currentUser.role.replace("_", " ")}</span>
             </span>
           </div>
 
           <button
             onClick={() => setIsKnowledgeOpen(true)}
-            className="self-start sm:self-auto px-2.5 sm:px-3 py-1 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs text-indigo-300 font-medium flex items-center gap-1.5 transition"
+            className="self-start sm:self-auto px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 border border-zinc-700/80 text-xs text-zinc-200 font-medium flex items-center gap-1.5 transition shadow-sm"
           >
-            <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+            <BookOpen className="w-3.5 h-3.5 text-zinc-400" />
             <span>Company Knowledge</span>
           </button>
         </div>

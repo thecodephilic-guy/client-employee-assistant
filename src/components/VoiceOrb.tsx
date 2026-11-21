@@ -313,36 +313,27 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
     return quickPrompts[role].find((p) => p.hero)?.text || quickPrompts[role][0].text;
   }
 
-  const roleStyles: Record<UserRole, { badge: string; glow: string; text: string }> = {
+  const roleStyles: Record<UserRole, { badge: string; text: string }> = {
     admin: {
-      badge: "bg-purple-500/20 text-purple-300 border-purple-500/40",
-      glow: "from-purple-600 via-indigo-600 to-blue-600",
+      badge: "bg-zinc-800 text-zinc-200 border-zinc-700/80",
       text: "Founder & Admin Mode",
     },
     hr: {
-      badge: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
-      glow: "from-emerald-500 via-teal-600 to-cyan-600",
+      badge: "bg-zinc-800 text-zinc-200 border-zinc-700/80",
       text: "HR Talent Suite",
     },
     engineering_manager: {
-      badge: "bg-amber-500/20 text-amber-300 border-amber-500/40",
-      glow: "from-amber-500 via-orange-600 to-red-600",
+      badge: "bg-zinc-800 text-zinc-200 border-zinc-700/80",
       text: "Engineering Manager Hub",
     },
     software_engineer: {
-      badge: "bg-blue-500/20 text-blue-300 border-blue-500/40",
-      glow: "from-cyan-500 via-blue-600 to-indigo-600",
+      badge: "bg-zinc-800 text-zinc-200 border-zinc-700/80",
       text: "Software Engineer Copilot",
     },
   };
 
   return (
-    <div className="glass-panel rounded-2xl p-4 sm:p-6 relative overflow-hidden border border-white/10 shadow-2xl">
-      {/* Background ambient lighting */}
-      <div
-        className={`absolute -top-24 -left-24 w-72 h-72 rounded-full blur-3xl opacity-30 bg-gradient-to-br ${roleStyles[userRole].glow}`}
-      />
-
+    <div className="bg-[#121216] rounded-2xl p-4 sm:p-6 relative border border-zinc-800/80 shadow-xl">
       <div className="flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 relative z-10">
         {/* Left: The Visual Voice Orb */}
         <div className="flex flex-col items-center justify-center shrink-0">
@@ -402,13 +393,13 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
           </div>
 
           <div className="flex items-center gap-2 mt-2 sm:mt-3">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-medium border bg-white/5 border-white/10 text-gray-300">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-medium border bg-zinc-900 border-zinc-800 text-zinc-300">
               <span
-                className={`w-2 h-2 rounded-full ${
-                  isAgoraConnected ? "bg-emerald-400 animate-ping" : "bg-gray-400"
+                className={`w-1.5 h-1.5 rounded-full ${
+                  isAgoraConnected ? "bg-emerald-400 animate-ping" : "bg-zinc-500"
                 }`}
               />
-              {isAgoraConnected ? "Agora RTC Active" : "Murf Falcon Audio Ready"}
+              {isAgoraConnected ? "Agora RTC Active" : "Murf Falcon Audio"}
             </span>
           </div>
         </div>
@@ -422,7 +413,7 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
               >
                 {roleStyles[userRole].text}
               </span>
-              <span className="text-xs text-gray-400 truncate max-w-[200px]">
+              <span className="text-xs text-zinc-400 truncate max-w-[200px]">
                 <strong className="text-white">{userName}</strong>
               </span>
             </div>
@@ -433,39 +424,39 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
                 onClick={() => setIsHandsFree(!isHandsFree)}
                 className={`px-2.5 py-1 rounded-full text-[11px] font-medium border flex items-center gap-1.5 transition ${
                   isHandsFree
-                    ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-300"
-                    : "bg-white/5 border-white/10 text-gray-400 hover:text-white"
+                    ? "bg-zinc-800 border-zinc-700 text-zinc-200"
+                    : "bg-zinc-900/60 border-zinc-800 text-zinc-400 hover:text-zinc-200"
                 }`}
                 title="Continuous Hands-Free Mode: automatically listens after speaking"
               >
-                <span className={`w-1.5 h-1.5 rounded-full ${isHandsFree ? "bg-emerald-400 animate-ping" : "bg-gray-500"}`} />
+                <span className={`w-1.5 h-1.5 rounded-full ${isHandsFree ? "bg-emerald-400" : "bg-zinc-600"}`} />
                 <span>Hands-Free</span>
               </button>
 
-              <span className="text-[11px] text-cyan-300 font-mono flex items-center gap-1 bg-cyan-500/10 px-2 py-0.5 rounded-full border border-cyan-500/20">
-                <Sparkles className="w-3 h-3 text-cyan-400" /> Gemini
+              <span className="text-[11px] text-zinc-400 font-mono flex items-center gap-1 bg-zinc-900 px-2 py-0.5 rounded-full border border-zinc-800">
+                <Sparkles className="w-3 h-3 text-zinc-400" /> Gemini
               </span>
             </div>
           </div>
 
           {/* Transcript / Spoken Result Box */}
-          <div className="bg-black/40 border border-white/10 rounded-xl p-3.5 sm:p-4 min-h-[80px] flex flex-col justify-center break-words overflow-hidden">
+          <div className="bg-zinc-950/70 border border-zinc-800/80 rounded-xl p-3.5 sm:p-4 min-h-[80px] flex flex-col justify-center break-words overflow-hidden">
             {transcript && (
-              <div className="text-xs sm:text-sm text-cyan-300 mb-1 flex items-start gap-2 break-words">
-                <Mic className="w-4 h-4 mt-0.5 text-cyan-400 shrink-0" />
+              <div className="text-xs sm:text-sm text-zinc-200 mb-1 flex items-start gap-2 break-words">
+                <Mic className="w-4 h-4 mt-0.5 text-zinc-400 shrink-0" />
                 <span className="italic">"{transcript}"</span>
               </div>
             )}
             {spokenResponse ? (
-              <div className="text-xs sm:text-sm text-gray-200 leading-relaxed flex items-start gap-2 break-words">
-                <Volume2 className="w-4 h-4 mt-0.5 text-purple-400 shrink-0" />
+              <div className="text-xs sm:text-sm text-zinc-200 leading-relaxed flex items-start gap-2 break-words">
+                <Volume2 className="w-4 h-4 mt-0.5 text-zinc-400 shrink-0" />
                 <div className="break-words overflow-hidden">{spokenResponse}</div>
               </div>
             ) : !transcript ? (
-              <div className="text-xs text-gray-400 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-purple-400 shrink-0" />
+              <div className="text-xs text-zinc-400 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-zinc-500 shrink-0" />
                 <span>
-                  Tap the glowing orb or select a prompt below to interact through natural hands-free voice.
+                  Tap the voice orb or select a prompt below to interact hands-free.
                 </span>
               </div>
             ) : null}
@@ -473,13 +464,13 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
 
           {/* Verbal Confirmation Pill (if action needs confirmation) */}
           {pendingConfirmation && (
-            <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 animate-pulse">
-              <div className="text-xs text-amber-200">
-                ⚠️ <strong>Voice Confirmation Required:</strong> Say "Yes", "Proceed", or click to confirm.
+            <div className="bg-zinc-900 border border-zinc-700/80 rounded-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
+              <div className="text-xs text-zinc-200">
+                ⚠️ <strong className="text-white">Voice Confirmation Required:</strong> Say "Yes", "Proceed", or click to confirm.
               </div>
               <button
                 onClick={onConfirmPending}
-                className="w-full sm:w-auto px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-black text-xs font-semibold flex items-center justify-center gap-1 transition shrink-0"
+                className="w-full sm:w-auto px-3.5 py-1.5 rounded-lg bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-medium flex items-center justify-center gap-1.5 transition shrink-0 shadow-sm"
               >
                 <CheckCircle2 className="w-3.5 h-3.5" /> Confirm Action
               </button>
@@ -488,9 +479,9 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
 
           {/* 1-Click Interactive Voice Test Prompts for Hackathon Judges */}
           <div>
-            <div className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-1.5 flex items-center gap-1.5">
+            <div className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5 flex items-center gap-1.5">
               <span>Judge Quick-Test Prompts</span>
-              <span className="text-gray-500 font-normal hidden sm:inline">(Click to test hands-free voice command)</span>
+              <span className="text-zinc-500 font-normal hidden sm:inline">(Click to test hands-free voice command)</span>
             </div>
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {quickPrompts[userRole].map((p, idx) => (
@@ -500,13 +491,13 @@ export const VoiceOrb: React.FC<VoiceOrbProps> = ({
                     setTranscript(p.text);
                     handleVoiceSubmit(p.text);
                   }}
-                  className={`text-xs px-2.5 sm:px-3 py-1.5 rounded-lg border transition-all text-left flex items-center gap-1.5 ${
+                  className={`text-xs px-2.5 sm:px-3 py-1.5 rounded-lg border transition text-left flex items-center gap-1.5 ${
                     p.hero
-                      ? "bg-gradient-to-r from-blue-600/30 to-purple-600/30 border-blue-500/50 text-blue-200 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20"
-                      : "bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20"
+                      ? "bg-zinc-800 text-zinc-100 border-zinc-700 hover:bg-zinc-700/80 shadow-sm font-medium"
+                      : "bg-zinc-900/60 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 hover:border-zinc-700"
                   }`}
                 >
-                  <Play className="w-3 h-3 text-cyan-400 shrink-0" />
+                  <Play className="w-3 h-3 text-zinc-400 shrink-0" />
                   <span>{p.label}</span>
                 </button>
               ))}

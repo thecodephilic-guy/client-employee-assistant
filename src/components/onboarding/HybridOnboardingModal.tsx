@@ -202,52 +202,49 @@ export const HybridOnboardingModal: React.FC<HybridOnboardingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-4">
-      <div className="glass-panel rounded-2xl sm:rounded-3xl max-w-2xl w-full border border-purple-500/30 shadow-2xl p-4 sm:p-8 relative overflow-hidden max-h-[92vh] overflow-y-auto">
-        {/* Glow ambient */}
-        <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full blur-3xl opacity-30 bg-purple-600" />
-
+      <div className="bg-[#121216] rounded-2xl sm:rounded-3xl max-w-2xl w-full border border-zinc-700/80 shadow-2xl p-4 sm:p-8 relative overflow-hidden max-h-[92vh] overflow-y-auto">
         {/* Header */}
         <div className="flex items-start justify-between relative z-10">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">
-                Standout Demo Flow
+              <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700/80">
+                Interactive Setup Flow
               </span>
-              <span className="text-xs text-gray-400">Murf Falcon Voice + Live Form</span>
+              <span className="text-xs text-zinc-400">Murf Falcon Voice + Live Form</span>
             </div>
             <h2 className="text-xl font-bold text-white mt-1.5 flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-purple-400" /> Hybrid Voice Company Onboarding
+              <Building2 className="w-5 h-5 text-zinc-300" /> Hybrid Voice Company Onboarding
             </h2>
-            <p className="text-xs text-gray-300 mt-1 max-w-lg leading-relaxed">
+            <p className="text-xs text-zinc-300 mt-1 max-w-lg leading-relaxed">
               Talk naturally with the onboarding assistant to fill workspace details on screen. Type or correct tricky strings at any time.
             </p>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition"
+            className="p-1.5 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* AI Voice Guidance Banner */}
-        <div className="mt-5 p-4 rounded-2xl bg-black/40 border border-purple-500/20 relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="mt-5 p-4 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="flex items-start gap-2.5">
-            <Sparkles className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+            <Sparkles className="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" />
             <div>
-              <div className="text-xs font-semibold text-purple-200">Onboarding Agent:</div>
-              <p className="text-xs text-gray-300 italic">{agentSpokenGuide}</p>
+              <div className="text-xs font-semibold text-zinc-200">Onboarding Agent:</div>
+              <p className="text-xs text-zinc-300 italic">{agentSpokenGuide}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={toggleVoiceInterview}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition shadow-lg ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 transition shadow-sm ${
                 isListening
-                  ? "bg-red-500 text-white animate-pulse"
-                  : "bg-purple-600 hover:bg-purple-500 text-white shadow-purple-600/30"
+                  ? "bg-red-600 text-white animate-pulse"
+                  : "bg-white hover:bg-zinc-200 text-zinc-950 font-medium"
               }`}
             >
               <Mic className="w-3.5 h-3.5" />
@@ -256,18 +253,18 @@ export const HybridOnboardingModal: React.FC<HybridOnboardingModalProps> = ({
 
             <button
               onClick={simulateFounderVoiceInput}
-              className="px-2.5 py-1.5 rounded-xl text-xs bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 flex items-center gap-1"
+              className="px-2.5 py-1.5 rounded-xl text-xs bg-zinc-900 hover:bg-zinc-800 text-zinc-300 border border-zinc-800 flex items-center gap-1 transition"
               title="Test with simulated founder speech"
             >
-              <Play className="w-3 h-3 text-cyan-400" />
+              <Play className="w-3 h-3 text-zinc-400" />
               <span className="hidden sm:inline">Simulate Speech</span>
             </button>
           </div>
         </div>
 
         {voicePromptText && (
-          <div className="mt-2 text-xs text-cyan-300 italic px-2 flex items-center gap-1.5">
-            <Mic className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="mt-2 text-xs text-zinc-300 italic px-2 flex items-center gap-1.5">
+            <Mic className="w-3.5 h-3.5 text-zinc-400" />
             <span>"{voicePromptText}"</span>
           </div>
         )}
@@ -276,31 +273,31 @@ export const HybridOnboardingModal: React.FC<HybridOnboardingModalProps> = ({
         <div className="mt-6 space-y-4 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">Company Name</label>
+              <label className="block text-xs font-medium text-zinc-300 mb-1">Company Name</label>
               <input
                 type="text"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
-                placeholder="e.g. HyperScale AI"
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-black/40 border text-white text-sm focus:outline-none transition-all ${
+                placeholder="e.g. One Corp"
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-zinc-950/60 border text-white text-sm focus:outline-none transition-all ${
                   recentlyUpdatedField === "companyName"
-                    ? "border-purple-400 ring-2 ring-purple-500/50"
-                    : "border-white/10 focus:border-purple-500"
+                    ? "border-zinc-400 ring-2 ring-zinc-500/30"
+                    : "border-zinc-800 focus:border-zinc-500"
                 }`}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">Founder Full Name</label>
+              <label className="block text-xs font-medium text-zinc-300 mb-1">Founder Full Name</label>
               <input
                 type="text"
                 value={founderName}
                 onChange={(e) => setFounderName(e.target.value)}
                 placeholder="e.g. Sohail Ansari"
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-black/40 border text-white text-sm focus:outline-none transition-all ${
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-zinc-950/60 border text-white text-sm focus:outline-none transition-all ${
                   recentlyUpdatedField === "founderName"
-                    ? "border-purple-400 ring-2 ring-purple-500/50"
-                    : "border-white/10 focus:border-purple-500"
+                    ? "border-zinc-400 ring-2 ring-zinc-500/30"
+                    : "border-zinc-800 focus:border-zinc-500"
                 }`}
               />
             </div>
@@ -308,58 +305,58 @@ export const HybridOnboardingModal: React.FC<HybridOnboardingModalProps> = ({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">Founder Email</label>
+              <label className="block text-xs font-medium text-zinc-300 mb-1">Founder Email</label>
               <input
                 type="email"
                 value={founderEmail}
                 onChange={(e) => setFounderEmail(e.target.value)}
                 placeholder="e.g. sohailansari483@gmail.com"
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-black/40 border text-white text-sm focus:outline-none transition-all ${
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-zinc-950/60 border text-white text-sm focus:outline-none transition-all ${
                   recentlyUpdatedField === "founderEmail"
-                    ? "border-purple-400 ring-2 ring-purple-500/50"
-                    : "border-white/10 focus:border-purple-500"
+                    ? "border-zinc-400 ring-2 ring-zinc-500/30"
+                    : "border-zinc-800 focus:border-zinc-500"
                 }`}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-gray-300 mb-1">
+              <label className="block text-xs font-medium text-zinc-300 mb-1">
                 GitHub Repository (owner/repo)
               </label>
               <input
                 type="text"
                 value={githubRepo}
                 onChange={(e) => setGithubRepo(e.target.value)}
-                placeholder="e.g. hyperscale-ai/core-services"
-                className={`w-full px-3.5 py-2.5 rounded-xl bg-black/40 border text-white text-sm focus:outline-none transition-all ${
+                placeholder="e.g. thecodephilic-guy/doc-assistant"
+                className={`w-full px-3.5 py-2.5 rounded-xl bg-zinc-950/60 border text-white text-sm focus:outline-none transition-all ${
                   recentlyUpdatedField === "githubRepo"
-                    ? "border-purple-400 ring-2 ring-purple-500/50"
-                    : "border-white/10 focus:border-purple-500"
+                    ? "border-zinc-400 ring-2 ring-zinc-500/30"
+                    : "border-zinc-800 focus:border-zinc-500"
                 }`}
               />
             </div>
           </div>
 
           {/* Keyboard-Only Tricky Strings */}
-          <div className="p-3.5 rounded-xl bg-white/5 border border-white/5 space-y-3">
-            <div className="text-[11px] font-semibold text-gray-400 flex items-center gap-1.5 uppercase tracking-wider">
-              <Key className="w-3.5 h-3.5 text-amber-400" />
+          <div className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
+            <div className="text-[11px] font-semibold text-zinc-400 flex items-center gap-1.5 uppercase tracking-wider">
+              <Key className="w-3.5 h-3.5 text-zinc-400" />
               <span>Keyboard Fallback for Tricky Strings</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-[11px] text-gray-400 mb-1">Admin Password</label>
+                <label className="block text-[11px] text-zinc-400 mb-1">Admin Password</label>
                 <input
                   type="password"
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg bg-black/60 border border-white/10 text-white text-xs focus:outline-none focus:border-purple-500"
+                  className="w-full px-3 py-1.5 rounded-lg bg-zinc-950/60 border border-zinc-800 text-white text-xs focus:outline-none focus:border-zinc-500"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] text-gray-400 mb-1">
+                <label className="block text-[11px] text-zinc-400 mb-1">
                   GitHub Personal Access Token (Optional)
                 </label>
                 <input
@@ -367,7 +364,7 @@ export const HybridOnboardingModal: React.FC<HybridOnboardingModalProps> = ({
                   value={githubToken}
                   onChange={(e) => setGithubToken(e.target.value)}
                   placeholder="ghp_••••••••••••••••"
-                  className="w-full px-3 py-1.5 rounded-lg bg-black/60 border border-white/10 text-white text-xs focus:outline-none focus:border-purple-500 font-mono"
+                  className="w-full px-3 py-1.5 rounded-lg bg-zinc-950/60 border border-zinc-800 text-white text-xs focus:outline-none focus:border-zinc-500 font-mono"
                 />
               </div>
             </div>
@@ -375,22 +372,22 @@ export const HybridOnboardingModal: React.FC<HybridOnboardingModalProps> = ({
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 relative z-10">
-          <span className="text-xs text-gray-400">
+        <div className="mt-6 pt-4 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-3 relative z-10">
+          <span className="text-xs text-zinc-400">
             Say <em>"Looks good, create the workspace"</em> or click Finalize.
           </span>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs text-gray-400 hover:text-white transition"
+              className="px-4 py-2 rounded-xl text-xs text-zinc-400 hover:text-white transition"
             >
               Cancel
             </button>
             <button
               disabled={isSubmitting}
               onClick={handleFinalizeWorkspace}
-              className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:scale-105 text-white flex items-center justify-center gap-2 shadow-xl shadow-purple-600/30 transition"
+              className="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-medium bg-white hover:bg-zinc-200 text-zinc-950 flex items-center justify-center gap-2 shadow-sm transition"
             >
               {isSubmitting ? (
                 <span>Creating Workspace...</span>
